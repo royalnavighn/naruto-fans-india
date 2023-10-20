@@ -1,36 +1,36 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import BodyCards from './BodyCards';
 
+
+
+
+export const postsContext = React.createContext()
+export const urlContext = React.createContext()
 function FetchData() {
-    const [post, setPost] = useState({})
+    const [posts, setPosts] = useState({})
+
+    const baseurl = 'https://www.narutodb.xyz/api/character?page=1&limit=1500'
 
     useEffect(() => {
-        // axios
-        //     .get('https://narutodb.xyz/api/character', {
-        //         mode: 'no-cors',
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             'Access-Control-Allow-Origin': '*',
-        //             'Access-Control-Allow-Methods': '*',
-        //             'Access-Control-Allow-Headers': '*',
-        //             'Access-Control-Allow-Credentials': true
-        //         },
-
-        //     })
-        //     .then(res => {
-        //         console.log(res.data)
-        //         setPost(res.data)
-        //     })
-        //     .catch(err => { console.log('error') })
-
-
-
-
+        axios
+            .get(`${baseurl}`)
+            .then(res => {
+                console.log(res.data)
+                setPosts(res.data)
+            })
+            .catch(err => { console.log('error') })
 
     }, []);
 
     return (
-        <div>FetchData</div>
+        <div>
+            <urlContext.Provider value={baseurl}>
+                <postsContext.Provider value={posts} >
+                    <BodyCards />
+                </postsContext.Provider>
+            </urlContext.Provider>
+        </div >
     )
 }
 
