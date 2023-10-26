@@ -4,6 +4,8 @@ import FetchData from './components/FetchData';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
+import CharacterDetails from './components/CharacterDetails';
+
 
 
 function App() {
@@ -14,11 +16,12 @@ function App() {
 
       <Header />
       <Routes>
+
         <Route exact path='/' Component={FetchData} />
+        <Route exact path='/character/:id' Component={CharacterDetails} />
       </Routes>
       <Footer />
-
-    </div>
+    </div >
 
   );
 }

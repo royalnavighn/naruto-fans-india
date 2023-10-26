@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
-import BodyCards from './BodyCards';
-
+import { Link } from 'react-router-dom'
+import CharacterList from './CharacterList'
 
 
 
 export const postsContext = React.createContext()
-export const urlContext = React.createContext()
+
 function FetchData() {
     const [posts, setPosts] = useState({})
 
@@ -23,14 +23,13 @@ function FetchData() {
 
     }, []);
 
+console.log(posts)
+
     return (
-        <div>
-            <urlContext.Provider value={baseurl}>
-                <postsContext.Provider value={posts} >
-                    <BodyCards />
-                </postsContext.Provider>
-            </urlContext.Provider>
-        </div >
+
+        <postsContext.Provider value={posts} >
+            <CharacterList />
+        </postsContext.Provider>
     )
 }
 
