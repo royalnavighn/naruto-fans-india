@@ -13,7 +13,7 @@ function CharacterDetailsObjectKeyValue({ data, children }) {
                             return (
                                 <> <strong>{key} </strong> :
 
-                                    {Object.entries(value) ? <>  {Object.values(value + '  ' + ','  )}   </> : <p>  {value + '  '  +',' } </p>}
+                                    {Object.entries(value) ? <>  {Object.values(value + " \xa0\xa0\xa0\xa0\xa0  "    )} <br /> <br />   </> : <p>  {value + '  '  +',' } </p>}
                                 </>
                             )
                         })

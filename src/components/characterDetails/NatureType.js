@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { characterDataContext } from '../CharacterDetails'
+import CharacterDetailsArray from './CharacterDetailsArray'
 import CharacterDetailsObjectValue from './CharacterDetailsObjectValue'
 
 function NatureType() {
@@ -10,12 +11,25 @@ function NatureType() {
   return (
 
 
-    <CharacterDetailsObjectValue data={natureType} >
+    <CharacterDetailsArray data={natureType}>
       NATURE TYPE
-    </CharacterDetailsObjectValue>
+    </CharacterDetailsArray>
+
+    // <CharacterDetailsObjectValue data={natureType} >
+    //   NATURE TYPE
+    // </CharacterDetailsObjectValue>
 
 
+    // <div>
 
+    //   {natureType ?
+    //     <>
+    //       <h2>Nature Type </h2>
+    //       {natureType.map(naturetype => (<> {naturetype} , </>))}
+    //     </>
+    //     : null}
+
+    // </div>
   )
 }
 

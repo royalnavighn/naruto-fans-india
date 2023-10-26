@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { characterDataContext } from '../CharacterDetails'
+import CharacterDetails, { characterDataContext } from '../CharacterDetails'
+import CharacterDetailsArray from './CharacterDetailsArray'
 import CharacterDetailsObjectValue from './CharacterDetailsObjectValue'
 
 function Tools() {
@@ -9,10 +10,9 @@ function Tools() {
   const tools = characterData.tools
   return (
 
-    <CharacterDetailsObjectValue data={tools} >
+    <CharacterDetailsArray data={tools}>
       TOOLS
-    </CharacterDetailsObjectValue>
-
+    </CharacterDetailsArray>
 
   )
 }
