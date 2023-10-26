@@ -10,7 +10,7 @@ function CharacterDetailsObjectValue({ data, children }) {
                     <h2>{children}</h2>
 
                     {
-                        data?.map(([key, value] = data) => { return <>   {value + ' \xa0\xa0\xa0\xa0\xa0\xa0' + ','}  </> })
+                        data?.map(([key, value] = data) => { return <>   {value }  </> })
                     }
                 </>
                 : ''}
