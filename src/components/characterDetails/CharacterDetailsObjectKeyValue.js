@@ -1,6 +1,10 @@
 import React, { Children } from 'react'
+import { json } from 'react-router-dom'
 
 function CharacterDetailsObjectKeyValue({ data, children }) {
+
+
+
     return (
         <div>
 
@@ -9,15 +13,30 @@ function CharacterDetailsObjectKeyValue({ data, children }) {
                 <>
                     <h2> {children}</h2>
 
-                        {data?.map(([key, value] = data) => {
-                            return (
-                                <> <strong>{key} </strong> :
+                    {data?.map(([key, value] = data) => {
+                        return (
+                            <>   <strong>{key} </strong>
 
-                                    {Object.entries(value) ? <>  {Object.values(value + " \xa0\xa0\xa0\xa0\xa0  "    )} <br /> <br />   </> : <p>  {value + '  '  +',' } </p>}
-                                </>
-                            )
-                        })
-                        }
+                                {value.length ? <> : {
+
+                                   value
+
+                                } <br /><br />  <br />   </> : <> {
+
+                                    Object.entries(value).map(([key, value]) => {
+
+                                        return (
+
+                                            <p>  <>{key}</> : {value}  <br />  </p>
+
+                                        )
+                                    })
+
+                                } </>}
+                            </>
+                        )
+                    })
+                    }
 
                 </>
 
