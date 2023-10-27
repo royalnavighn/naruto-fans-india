@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { characterDataContext } from '../CharacterDetails'
+import { characterDataContext } from '../../CharacterDetails'
 import CharacterDetailsObjectKeyValue from './CharacterDetailsObjectKeyValue'
 
 function Family() {
@@ -12,7 +12,7 @@ function Family() {
 
 
     <CharacterDetailsObjectKeyValue data={family} >
-      FAMILY
+      {family.length > 0 ? 'FAMILY' : ''}
     </CharacterDetailsObjectKeyValue>
 
 

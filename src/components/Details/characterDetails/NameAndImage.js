@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { characterDataContext } from '../CharacterDetails'
+import { characterDataContext } from '../../CharacterDetails'
 
 function NameAndImage() {
 
@@ -11,7 +11,7 @@ function NameAndImage() {
         <>
 
             <h1>{characterData.name}</h1>
-            {characterData.images?.map(postImage => <img src={postImage} />)}
+            {characterData.images?.map((postImage, i) => <img src={postImage} alt={characterData.name + ' image ' + i} />)}
 
         </>
     )

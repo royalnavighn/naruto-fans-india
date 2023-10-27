@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { characterDataContext } from '../CharacterDetails'
+import { characterDataContext } from '../../CharacterDetails'
 
 function UniqueTraits() {
   const characterData = useContext(characterDataContext)

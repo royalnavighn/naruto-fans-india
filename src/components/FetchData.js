@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import CharacterList from './CharacterList'
+import CharacterList from './datasList/CharacterList'
 
 
 
