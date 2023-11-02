@@ -1,18 +1,15 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { commonFunctionForList } from '../../helper/generalHelper'
-import { postsContext } from '../FetchData'
+import { teamCharacterPostsContext } from './TeamCharacterList'
 
-function CharacterList() {
+function TeamCharacters() {
 
-    const {characters} = useContext(postsContext)
-
-    //console.log(posts.characters);
+    const { characters } = useContext(teamCharacterPostsContext)
+ //   console.log(characters)
 
     return (
-
-
         <div>
+
             <ul>
                 {characters && characters.map(post => (
 
@@ -26,8 +23,9 @@ function CharacterList() {
                     </li>
                 ))}
             </ul>
+
         </div>
     )
 }
 
-export default CharacterList
+export default TeamCharacters

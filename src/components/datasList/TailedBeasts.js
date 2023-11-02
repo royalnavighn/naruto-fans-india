@@ -1,20 +1,21 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { commonFunctionForList } from '../../helper/generalHelper'
 import { postsContext } from '../FetchData'
 
-function CharacterList() {
+function TailedBeasts() {
+    const { tailedBeasts } = useContext(postsContext)
 
-    const {characters} = useContext(postsContext)
+    // const { selected } = useParams()
 
-    //console.log(posts.characters);
+
+    //  console.log(tailedBeasts);
 
     return (
-
-
         <div>
+
             <ul>
-                {characters && characters.map(post => (
+                {tailedBeasts && tailedBeasts.map(post => (
 
                     <li key={post.id}>
                         <Link to={`${post.id}/${post.name}`} >
@@ -26,8 +27,9 @@ function CharacterList() {
                     </li>
                 ))}
             </ul>
+
         </div>
     )
 }
 
-export default CharacterList
+export default TailedBeasts

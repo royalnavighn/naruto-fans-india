@@ -1,20 +1,17 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { commonFunctionForList } from '../../helper/generalHelper'
 import { postsContext } from '../FetchData'
 
-function CharacterList() {
-
-    const {characters} = useContext(postsContext)
-
-    //console.log(posts.characters);
+function Akatsukis() {
+    const { akatsuki } = useContext(postsContext)
+    //  console.log(posts);
 
     return (
-
-
         <div>
+
             <ul>
-                {characters && characters.map(post => (
+                {akatsuki && akatsuki.map(post => (
 
                     <li key={post.id}>
                         <Link to={`${post.id}/${post.name}`} >
@@ -30,4 +27,6 @@ function CharacterList() {
     )
 }
 
-export default CharacterList
+
+
+export default Akatsukis

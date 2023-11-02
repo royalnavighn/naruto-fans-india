@@ -1,18 +1,14 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { commonFunctionForList } from '../../helper/generalHelper'
-import { postsContext } from '../FetchData'
+import { Link } from 'react-router-dom';
+import { kekkeiGenkaiCharacterPostsContext } from './KekkeiGenkaiCharacterList'
 
-function CharacterList() {
+function KekkeiGenkaiCharacters() {
 
-    const {characters} = useContext(postsContext)
-
-    //console.log(posts.characters);
-
+    const { characters } = useContext(kekkeiGenkaiCharacterPostsContext);
     return (
 
-
         <div>
+
             <ul>
                 {characters && characters.map(post => (
 
@@ -30,4 +26,4 @@ function CharacterList() {
     )
 }
 
-export default CharacterList
+export default KekkeiGenkaiCharacters

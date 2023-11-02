@@ -1,19 +1,27 @@
 import React, { useContext } from 'react'
+import { getRankSectionByRankDetails } from '../../../helper/sectionContentHelper'
 import { characterDataContext } from '../../CharacterDetails'
-import CharacterDetailsObjectKeyValue from './CharacterDetailsObjectKeyValue'
 
 function Family() {
 
-  const characterData = useContext(characterDataContext)
-  const family = Object.entries(characterData.family || {})
+  const { family } = useContext(characterDataContext)
+  let familySection = getRankSectionByRankDetails(family)
   return (
+    <div>
+      {family &&
+        <div className='family'>
+          <h2>family</h2>
+
+          <div dangerouslySetInnerHTML={{
+            __html: familySection
+          }} />
+
+        </div>
 
 
+      }
+    </div>
 
-
-    <CharacterDetailsObjectKeyValue data={family} >
-      {family.length > 0 ? 'FAMILY' : ''}
-    </CharacterDetailsObjectKeyValue>
 
 
 

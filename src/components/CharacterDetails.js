@@ -7,7 +7,7 @@ import JutsuAndNatureType from './Details/characterDetails/JutsuAndNatureType';
 import NameAndImage from './Details/characterDetails/NameAndImage';
 import OtherDetails from './Details/characterDetails/OtherDetails';
 import Personal from './Details/characterDetails/Personal';
-
+import { urlOfDb } from '../helper/constants';
 
 
 export const characterDataContext = React.createContext()
@@ -18,10 +18,10 @@ function CharacterDetails() {
 
     const [characterData, setCharacterData] = useState(null);
 
-
+    const baseurl = urlOfDb
     //
     const character = async () => {
-        const response = await axios.get(`https://www.narutodb.xyz/api/character/${id}`);
+        const response = await axios.get(`${baseurl}/character/${id}`);
         return response.data;
     };
 
@@ -33,7 +33,7 @@ function CharacterDetails() {
         return <div>Loading...</div>;
     }
 
-    console.log(characterData)
+   // console.log(characterData)
 
     return (
 

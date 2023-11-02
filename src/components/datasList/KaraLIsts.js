@@ -1,20 +1,16 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { commonFunctionForList } from '../../helper/generalHelper'
 import { postsContext } from '../FetchData'
 
-function CharacterList() {
+function KaraLIsts() {
+    const {kara} = useContext(postsContext)
 
-    const {characters} = useContext(postsContext)
-
-    //console.log(posts.characters);
+    // console.log(posts);
 
     return (
-
-
         <div>
-            <ul>
-                {characters && characters.map(post => (
+             <ul>
+                {kara && kara.map(post => (
 
                     <li key={post.id}>
                         <Link to={`${post.id}/${post.name}`} >
@@ -30,4 +26,4 @@ function CharacterList() {
     )
 }
 
-export default CharacterList
+export default KaraLIsts

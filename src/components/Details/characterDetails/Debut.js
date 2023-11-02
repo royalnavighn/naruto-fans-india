@@ -1,18 +1,35 @@
 import React from 'react'
 import { useContext } from 'react'
+import { getRankSectionByRankDetails } from '../../../helper/sectionContentHelper'
 import { characterDataContext } from '../../CharacterDetails'
-import CharacterDetailsObjectKeyValue from './CharacterDetailsObjectKeyValue'
+
 
 function Debut() {
-  const characterData = useContext(characterDataContext)
-  let debut = Object.entries(characterData.debut || '')
+  const {debut} = useContext(characterDataContext)
+  let debutSection = getRankSectionByRankDetails(debut)
   return (
 
 
+    <div>
+    {debut &&
+      <div className='debut'>
+        <h2>Debut</h2>
 
-    <CharacterDetailsObjectKeyValue data={debut} >
-      {debut.length > 0 ? 'DEBUT' : ''}
-    </CharacterDetailsObjectKeyValue>
+        <div dangerouslySetInnerHTML={{
+          __html: debutSection
+        }} />
+
+      </div>
+
+
+    }
+  </div>
+
+
+
+    // <CharacterDetailsObjectKeyValue data={debut} >
+    //   {debut.length > 0 ? 'DEBUT' : ''}
+    // </CharacterDetailsObjectKeyValue>
 
 
   )

@@ -1,3 +1,7 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { urlOfDb } from "./constants";
 
 
 export const typeChecker = (value) => {
@@ -21,5 +25,64 @@ export const typeChecker = (value) => {
         }
 
     }
+
+}
+
+
+
+
+
+
+
+
+
+
+export const GetIdDataAndCharacterUrl = (id, selectName) => {
+
+
+    const [idData, setIdData] = useState('')
+    const [characterUrl, setCharacterUrl] = useState()
+    const [select, setSelect] = useState('')
+
+    useEffect(() => {
+        if (typeof (id) !== 'undefined') {
+            setSelect(selectName)
+            setIdData(id)
+            setCharacterUrl(`${urlOfDb}/${select}/${id}?page=1&limit=200`)
+        }
+    }, [idData])
+
+
+    console.log(idData, select, characterUrl)
+
+    return (
+
+        { characterUrl }
+
+    )
+
+}
+
+
+export const GetPostsReturnData = (characterUrl) => {
+
+    const [posts, setPosts] = useState()
+    const [showPost, setShowPost] = useState(false)
+
+    const getApi = async () => {
+        await axios
+            .get(`${characterUrl}`)
+            .then(res => {
+                setPosts(res.data)
+                setShowPost(true);
+            })
+            .catch(err => { console.log('error') })
+    }
+
+
+    return (
+
+        { showPost, posts, getApi }
+    )
 
 }
