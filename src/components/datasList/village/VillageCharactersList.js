@@ -9,6 +9,11 @@ export const villageCharacterPostsContext = React.createContext()
 function VillageCharactersList() {
 
 
+
+
+
+
+
   const { id } = useParams();
   const village = 'village';
   const { characterUrl } = GetIdDataAndCharacterUrl(id, village);
@@ -18,7 +23,7 @@ function VillageCharactersList() {
     getApi();
   }, [characterUrl]);
 
-  // console.log(id)
+
 
   return (
     <div>

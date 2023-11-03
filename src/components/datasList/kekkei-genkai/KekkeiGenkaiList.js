@@ -1,20 +1,26 @@
 import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { commonFunctionForList } from '../../../helper/generalHelper'
+import SearchDataResult, { filteredData } from '../../../helper/SearchDataResult'
 import { postsContext } from '../../FetchData'
 
 function KekkeiGenkaiList() {
     const { kekkeigenkai } = useContext(postsContext)
 
     const { selected } = useParams()
-    // console.log(posts);
+
+
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, kekkeigenkai)
+
 
     return (
         <div>
 
 
             <ul>
-                {kekkeigenkai && kekkeigenkai.map(post => (
+                {data && data.map(post => (
 
                     <li key={post.id}>
                         <Link to={`/${selected}/${post.id}/${post.name}/characters`} >

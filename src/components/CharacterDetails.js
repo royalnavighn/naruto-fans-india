@@ -33,7 +33,6 @@ function CharacterDetails() {
         return <div>Loading...</div>;
     }
 
-   // console.log(characterData)
 
     return (
 

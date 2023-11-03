@@ -65,9 +65,9 @@ const Dropdown = ({ placeHolder }) => {
             </div>
             {showMenu &&
                 < div className='dropdown-menu'>
-                    {options?.map((option) => (
-                        <Link to={`/${option.value}`}> < div onClick={() => onItemClick(option)}
-                            key={option.value} className={`dropdown-item ${isSelected(option) && "selected"} `} >{option.label} </div></Link>
+                    {options?.map((option ,index) => (
+                        <Link to={`/${option.value}`}> < div  onClick={() => onItemClick(option)}
+                            key={index} className={`dropdown-item ${isSelected(option) && "selected"} `} >{option.label} </div></Link>
                     ))}
                 </div>
             }

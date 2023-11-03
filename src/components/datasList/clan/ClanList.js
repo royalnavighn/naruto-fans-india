@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { commonFunctionForList } from '../../../helper/generalHelper'
+import SearchDataResult, { filteredData } from '../../../helper/SearchDataResult'
 import { postsContext } from '../../FetchData'
 
 
@@ -11,21 +12,18 @@ function ClanList() {
 
     const { selected } = useParams()
 
-    // const { clans } = posts
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, clans)
+
 
     return (
-
-
         <div>
-            clan
-
-            {/* {commonFunctionForList(clans, selected)} */}
-
 
             <ul>
-                {clans && clans.map(post => (
+                {data && data.map((post, index) => (
 
-                    <li key={post.id}>
+                    <li key={index}>
                         <Link to={`/${selected}/${post.id}/${post.name}/characters`} >
                             <h4>
                                 {post.name}
@@ -35,8 +33,6 @@ function ClanList() {
                     </li>
                 ))}
             </ul>
-
-
 
         </div>
     )

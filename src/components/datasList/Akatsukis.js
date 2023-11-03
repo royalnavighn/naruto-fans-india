@@ -1,19 +1,23 @@
 import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { commonFunctionForList } from '../../helper/generalHelper'
+import SearchDataResult, { filteredData } from '../../helper/SearchDataResult'
 import { postsContext } from '../FetchData'
 
 function Akatsukis() {
     const { akatsuki } = useContext(postsContext)
-    //  console.log(posts);
+
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, akatsuki)
 
     return (
         <div>
 
             <ul>
-                {akatsuki && akatsuki.map(post => (
+                {data && data.map((post, index) => (
 
-                    <li key={post.id}>
+                    <li key={index}>
                         <Link to={`${post.id}/${post.name}`} >
                             <h4>
                                 {post.name}

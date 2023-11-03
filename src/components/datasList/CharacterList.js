@@ -1,22 +1,25 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { commonFunctionForList } from '../../helper/generalHelper'
+import SearchDataResult, { filteredData } from '../../helper/SearchDataResult'
 import { postsContext } from '../FetchData'
 
 function CharacterList() {
 
-    const {characters} = useContext(postsContext)
+    const { characters } = useContext(postsContext)
 
-    //console.log(posts.characters);
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, characters)
 
     return (
 
 
         <div>
             <ul>
-                {characters && characters.map(post => (
+                {data && data.map((post, index) => (
 
-                    <li key={post.id}>
+                    <li key={index}>
                         <Link to={`${post.id}/${post.name}`} >
                             <h4>
                                 {post.name}

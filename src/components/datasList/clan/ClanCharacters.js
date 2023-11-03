@@ -1,13 +1,20 @@
 import React, { useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import SearchDataResult, { filteredData } from '../../../helper/SearchDataResult'
 import { clanCharacterPostsContext } from './ClanCharacterList'
 
 function ClanCharacters() {
-    const {characters} = useContext(clanCharacterPostsContext)
+    const { characters } = useContext(clanCharacterPostsContext)
+
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, characters)
+
+
     return (
         <div>
             <ul>
-                {characters && characters.map(post => (
+                {data && data.map(post => (
 
                     <li key={post.id}>
                         <Link to={`${post.id}/${post.name}`} >

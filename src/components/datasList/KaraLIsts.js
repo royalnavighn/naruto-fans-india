@@ -1,18 +1,21 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import SearchDataResult, { filteredData } from '../../helper/SearchDataResult'
 import { postsContext } from '../FetchData'
 
 function KaraLIsts() {
-    const {kara} = useContext(postsContext)
+    const { kara } = useContext(postsContext)
 
-    // console.log(posts);
+    const { searchData } = SearchDataResult()
+
+    const data = filteredData(searchData, kara)
 
     return (
         <div>
-             <ul>
-                {kara && kara.map(post => (
+            <ul>
+                {data && data.map((post, index) => (
 
-                    <li key={post.id}>
+                    <li key={index}>
                         <Link to={`${post.id}/${post.name}`} >
                             <h4>
                                 {post.name}
