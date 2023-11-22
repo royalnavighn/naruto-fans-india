@@ -39,7 +39,7 @@ function CharacterDetails() {
 
         <div>
             <characterDataContext.Provider value={characterData} >
-                <NameAndImage />
+                {/* <NameADataFetchndImag /> */}
 
                 <Personal />
 
