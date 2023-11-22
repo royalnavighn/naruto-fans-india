@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
+
 import { Link } from 'react-router-dom';
 import { urlOfDb } from '../helper/constants'
 import Slider from 'react-slick';
@@ -8,44 +9,39 @@ import 'slick-carousel/slick/slick-theme.css';
 import { SelectedValueContext } from './ContainerComponents';
 
 function CharacterCards() {
-
-    const [characterUrl, setCharacterUrl] = useState('');
+    const [characterUrl, setCharacterUrl] = useState();
     const [fetchData, setFetchData] = useState('');
     const url = urlOfDb;
-    const { selctedValue } = Number(useContext(SelectedValueContext));
 
     const { clan, village, kekkeiGenkai, tailedBeast, team } = useContext(SelectedValueContext)
-    console.log(clan, village, kekkeiGenkai, tailedBeast, team);
-    const [loadMore, setLoadMore] = useState('');
+    //console.log(clan, village, kekkeiGenkai, tailedBeast, team);
+    const [loadMore, setLoadMore] = useState(100);
+
+
+
 
     useEffect(() => {
-        setLoadMore(selctedValue)
-    }, [])
+        setCharacterUrl(`${url}/character`)
+    }, [url])
 
 
     const handleClick = () => {
-        setLoadMore(prevState => prevState + selctedValue)
+        setLoadMore(prevState => prevState + loadMore)
 
     }
 
 
-    const data = async () => {
-        const response = await axios.get(characterUrl);
-        return response.data;
-    };
-
-
-
     useEffect(() => {
-        setCharacterUrl(`${url}/character?page=1&limit=${loadMore}`)
-        data().then(setFetchData);
+        const fetchData = async () => {
+            const response = await axios.get(`${url}/character?page=1&limit=${loadMore}`);
+            setFetchData(response.data);
+        };
 
-    }, [loadMore]);
+        fetchData();
+
+    }, [loadMore, url]);
 
     const { characters } = fetchData;
-
-    // console.log(fetchData)
-
 
 
     return (
@@ -78,8 +74,10 @@ function CharacterCards() {
                 </li>
             ))
             }
+            <div >
+                <button onClick={handleClick}  >Load More </button>
+            </div>
 
-            <button onClick={handleClick}  >Load More </button>
 
         </>
     )
