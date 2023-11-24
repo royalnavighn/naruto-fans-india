@@ -9,7 +9,8 @@ html {
 }
 
 body {
-    color: #999999;
+    min-height: 100vh;
+   /* color: #ffff; */
     font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -19,6 +20,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
+
 }
 
 img {
@@ -86,7 +88,7 @@ img {
 
 img {
     width: 100%;
-    max-height:200px;
+    max-height: 200px;
     vertical-align: middle;
 }
 
@@ -96,7 +98,7 @@ img {
     background-size: cover;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-    max-height:200px;
+    max-height: 200px;
     overflow: hidden;
     position: relative;
     transition: filter 0.5s cubic-bezier(.43, .41, .22, .91);

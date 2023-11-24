@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { urlOfDb } from "./constants";
 
 
@@ -77,6 +76,26 @@ export const GetPostsReturnData = (characterUrl) => {
     return (
 
         { showPost, posts, getApi }
+    )
+
+}
+
+
+
+export const PaginationArray = (totalCharacters, loadmore) => {
+
+    let totalPageNumber = Math.trunc(totalCharacters / loadmore)
+
+    let pagination = [];
+
+    totalPageNumber = (totalCharacters % loadmore !== 0) ? totalPageNumber + 1 : totalPageNumber
+
+    for (let i = 1; i <= totalPageNumber; i++) {
+        pagination.push(i);
+    }
+
+    return (
+        pagination
     )
 
 }

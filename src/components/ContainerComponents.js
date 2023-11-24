@@ -31,9 +31,9 @@ function ContainerComponents() {
                 <Col sm={10}>
 
                     <SelectedValueContext.Provider value={{ clan, village, kekkeiGenkai, tailedBeast, team }} >
-                        <ul className='cards'>
-                            <CharacterCards />
-                        </ul>
+
+                        <CharacterCards />
+
                     </SelectedValueContext.Provider>
 
                 </Col>
@@ -54,7 +54,7 @@ function ContainerComponents() {
 
                 </Col>
             </Row>
-        </Container>
+        </Container >
 
 
     )
