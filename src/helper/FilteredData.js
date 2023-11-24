@@ -12,7 +12,7 @@ function FilteredData({ setClan, setVillage, setKekkeiGenkai, setTailedBeast, se
     const url = urlOfDb
 
     useEffect(() => {
-        setDataUrl(`${url}/${type}`);
+        setDataUrl(`${url}/${type}?page=1&limit=1500`);
         const data = async () => {
             const response = await axios.get(dataUrl);
             return response.data;

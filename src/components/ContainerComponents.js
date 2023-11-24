@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import '../assets/css/card.css'
-
-
 import { Container } from 'react-bootstrap';
 import FilteredData from '../helper/FilteredData';
 import CharacterCards from './CharacterCards';
+import { CategoryFilterOptions } from '../helper/constants';
 
 
 export const SelectedValueContext = React.createContext()
@@ -41,11 +38,9 @@ function ContainerComponents() {
 
                 </Col>
                 <Col sm={2}>
+
                     <div className='filter' >
-                        <h2>Filter</h2>
-
-
-
+                        <h2> Filter</h2>
                         <br />
                         <FilteredData setClan={setClan} type="clan" />
                         <FilteredData setVillage={setVillage} type="village" />
@@ -53,6 +48,10 @@ function ContainerComponents() {
                         <FilteredData setTailedBeast={setTailedBeast} type="tailed-beast" />
                         <FilteredData setTeam={setTeam} type="team" />
                     </div>
+
+
+
+
                 </Col>
             </Row>
         </Container>

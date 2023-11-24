@@ -16,3 +16,12 @@ export const LoadMoreOptions = [
     { 'value': '400', 'label': '400' },
     { 'value': '500', 'label': '500' },
 ]
+
+
+export const CategoryFilterOptions = [
+    { 'value': 'clan', 'label': 'Clans'},
+    { 'value': 'village', 'label': 'Villages'},
+    { 'value': 'kekkeigenkai', 'label': 'kekkeiGenkai'},
+    { 'value': 'tailedbeast', 'label': 'TailedBeasts'},
+    { 'value': 'teams', 'label': 'Teams'}
+]

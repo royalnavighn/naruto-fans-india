@@ -31,12 +31,6 @@ export const typeChecker = (value) => {
 
 
 
-
-
-
-
-
-
 export const GetIdDataAndCharacterUrl = (id, selectName) => {
 
 

@@ -6,10 +6,12 @@ import { selectBoxOptions } from './FilteredData';
 
 export const GetOptionData = ({ setOption, type, children }) => {
   const [selectedValue, setSelectedValue] = useState([]);
+
   const { clans, villages, kekkeigenkai, tailedBeasts, teams } = useContext(selectBoxOptions);
 
   const handleChange = (selectedOption) => {
-    const values = selectedOption.length ? selectedOption.map(option => option.value) : selectedOption.value;
+    const values = selectedOption === null ? '' : (selectedOption.length ?selectedOption.map(option => option.value) : selectedOption.value);
+
     setSelectedValue(values);
   }
 
@@ -18,7 +20,7 @@ export const GetOptionData = ({ setOption, type, children }) => {
   }, [selectedValue, setOption])
 
   let options;
-  let isMulti = false
+
   switch (type) {
     case ('clan'):
       options = clans && clans.map((clan) => ({ 'value': clan.name, 'label': clan.name }));
@@ -28,7 +30,6 @@ export const GetOptionData = ({ setOption, type, children }) => {
       break;
     case ('kekkeigenkai'):
       options = kekkeigenkai && kekkeigenkai.map((kekkeigenkai) => ({ 'value': kekkeigenkai.name, 'label': kekkeigenkai.name }));
-      isMulti = true
       break;
     case ('tailedBeasts'):
       options = tailedBeasts && tailedBeasts.map((tailedBeast) => ({ 'value': tailedBeast.name, 'label': tailedBeast.name }));
@@ -44,7 +45,7 @@ export const GetOptionData = ({ setOption, type, children }) => {
     <Select
       options={options}
       placeholder={selectedValue.length ? selectedValue : children}
-      isMulti={isMulti}
+      isClearable
       onChange={handleChange}
       value={options.filter(option => selectedValue.includes(option.value))}
     />
