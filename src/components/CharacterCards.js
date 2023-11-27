@@ -40,7 +40,7 @@ function CharacterCards() {
 
             }
 
-            setTimeout(function () { setLoading(false); }, 1400)
+            setTimeout(function () { setLoading(false); }, 1800)
             setFetchData(response ? response.data : '');
 
         }
@@ -54,9 +54,9 @@ function CharacterCards() {
             (fetchData.characters &&
                 fetchData.characters.filter(character =>
                     (clan && character.personal?.clan === clan) ||
-                    (village && character.personal?.affiliation === village) ||
-                    (kekkeiGenkai && character.personal?.kekkeiGenkai === kekkeiGenkai) ||
-                    (tailedBeast && Array.isArray(character.personal?.tailedBeast) ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast) ||
+                    (village && Array.isArray(character.personal?.affiliation) ? character.affiliation?.village.includes(village) : character.personal?.affiliation === village) ||
+                    (kekkeiGenkai && Array.isArray(character.personal?.kekkeiGenkai) ? character.personal?.kekkeiGenkai.includes(kekkeiGenkai) : character.personal?.kekkeiGenkai === kekkeiGenkai) ||
+                    (tailedBeast && character.personal?.tailedBeast ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast ) ||
                     (team && Array.isArray(character.personal?.team) ? character.personal?.team.includes(team) : character.personal?.team === team)
                 )) ||
             null
@@ -97,7 +97,7 @@ function CharacterCards() {
 
 
                 {!loading &&
-                    ((characterArray.length >= 100) &&
+                    ((filteredArray.length >= 100) &&
                         < section className='pagination'>
 
                             <div id="wrapper">

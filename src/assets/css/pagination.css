@@ -106,8 +106,8 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    width: 18vw;
-    height: 18vw;
+    width: 30vw;
+    height: 30vw;
     border-radius: 50%;
     border: 2.5vw solid #000;
     box-sizing: border-box;
@@ -124,17 +124,17 @@ body {
     position: absolute;
     top: 0;
     background-color: #fff ;
-    border-top-left-radius: 28vw;
-    border-top-right-radius: 28vw;
+    border-top-left-radius: 50vw;
+    border-top-right-radius: 50vw;
     z-index: 1;
-    border-bottom: 1.5vw solid #000;
+    border-bottom: 2.5vw solid #000;
     box-sizing: border-box;
     animation: blink 3s ease-out infinite;
 }
 
 .eye .black-outline {
-    height: calc(0.6 * 18vw);
-    width: calc(0.6 * 18vw);
+    height: calc(0.6 * 30vw);
+    width: calc(0.6 * 30vw);
     border-radius: 50%;
     border: 3px solid #000;
     display: flex;
@@ -144,8 +144,8 @@ body {
 }
 
 .eye .pupil {
-    height: calc(0.25 * 18vw);
-    width: calc(0.25 * 18vw);
+    height: calc(0.25 * 30vw);
+    width: calc(0.25 * 30vw);
     position: absolute;
     border-radius: 50%;
     background-color: #000;
@@ -153,8 +153,8 @@ body {
 
 .eye .tear {
     border-radius: 50%;
-    height: calc(0.065 * 18vw);
-    width: calc(0.065 * 18vw);
+    height: calc(0.065 * 30vw);
+    width: calc(0.065 * 30vw);
     position: absolute;
     background-color: #000;
 }
@@ -162,8 +162,8 @@ body {
 .eye .tear:before {
     position: absolute;
     border-radius: 50%;
-    height: calc((0.065 * 18vw) + 0.4 * (0.065 * 18vw));
-    width: calc((0.065 * 18vw) + 0.4 * (0.065 * 18vw));
+    height: calc((0.065 * 30vw) + 0.4 * (0.065 * 30vw));
+    width: calc((0.065 * 30vw) + 0.4 * (0.065 * 30vw));
     content: '';
     box-shadow: 3px 5px 0 #000;
 }
@@ -171,7 +171,7 @@ body {
 .eye .tear.first {
     background-color: #000;
     margin-bottom: 30px;
-    margin-right: calc((0.6 * 18vw) + 2px);
+    margin-right: calc((0.6 * 30vw) + 2px);
 }
 
 .eye .tear.first:before {
@@ -183,7 +183,7 @@ body {
 .eye .tear.second {
     background-color: #000;
     margin-bottom: 30px;
-    margin-left: calc((0.6 * 18vw) + 2px);
+    margin-left: calc((0.6 * 30vw) + 2px);
 }
 
 .eye .tear.second:before {
@@ -194,7 +194,7 @@ body {
 
 .eye .tear.third {
     background-color: #000;
-    margin-top: calc((0.3 * 18vw) + 2px);
+    margin-top: calc((0.6 * 30vw) + 2px);
 }
 
 .eye .tear.third:before {
