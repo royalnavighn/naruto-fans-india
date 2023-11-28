@@ -3,12 +3,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../assets/css/card.css'
 import { Container } from 'react-bootstrap';
-import FilteredData from '../helper/FilteredData';
+import FilteredData, { AdvanceFilterData } from '../helper/FilteredData';
 import CharacterCards from './CharacterCards';
-import { CategoryFilterOptions } from '../helper/constants';
+//import { CategoryFilterOptions } from '../helper/constants';
 
 
-export const SelectedValueContext = React.createContext()
+export const SelectedValueContext = React.createContext();
+export const CharacterArrayContext = React.createContext();
+
 
 function ContainerComponents() {
 
@@ -18,26 +20,26 @@ function ContainerComponents() {
     const [kekkeiGenkai, setKekkeiGenkai] = useState('');
     const [tailedBeast, setTailedBeast] = useState('');
     const [team, setTeam] = useState('');
+    const [characterArray, setCharacterArray] = useState([]);
 
-
-
+    //console.log(characterArray);
 
 
     return (
 
 
         <Container fluid>
-            <Row>
-                <Col sm={10}>
+            <Row md={12}>
+                <Col lg={{ span: 10, order: 1 }} md={{ order: 2 }} sm={{ order: 2 }} xs={{ order: 2 }} >
 
                     <SelectedValueContext.Provider value={{ clan, village, kekkeiGenkai, tailedBeast, team }} >
 
-                        <CharacterCards />
+                        <CharacterCards setCharacterArray={setCharacterArray} />
 
                     </SelectedValueContext.Provider>
 
                 </Col>
-                <Col sm={2}>
+                <Col lg={{ span: 2, order: 2 }} md={{ order: 1 }} sm={{ order: 1 }} xs={{ order: 1 }}>
 
                     <div className='filter' >
                         <h2> Filter</h2>
@@ -49,8 +51,15 @@ function ContainerComponents() {
                         <FilteredData setTeam={setTeam} type="team" />
                     </div>
 
-
-
+                    <div className='advance-filter'>
+                        <h2>Advance Filter</h2>
+                        <br />
+                        <CharacterArrayContext.Provider value={characterArray}>
+                            <FilteredData setClan={setClan} type="clan" />
+                            <AdvanceFilterData type='village' />
+                            <AdvanceFilterData type='kekkeiGenkai' />
+                        </CharacterArrayContext.Provider>
+                    </div>
 
                 </Col>
             </Row>

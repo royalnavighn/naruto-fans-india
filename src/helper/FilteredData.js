@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { CharacterArrayContext } from '../components/ContainerComponents';
 import { urlOfDb } from './constants'
 
-import {  GetOptionData} from './dropdownOptionFetch';
+import { GetOptionData } from './dropdownOptionFetch';
 
 export const selectBoxOptions = React.createContext();
 
@@ -67,3 +68,49 @@ function FilteredData({ setClan, setVillage, setKekkeiGenkai, setTailedBeast, se
 
 
 export default FilteredData
+
+
+
+
+export const AdvanceFilterData = ({ type }) => {
+
+    const characterArray = useContext(CharacterArrayContext);
+
+    const [adFilterArray, setAdfilterArray] = useState([]);
+
+    // console.log(characterArray);
+
+    // characterArray?.map((character) => console.log( character.personal.affiliation))
+
+
+
+
+
+    useEffect(() => {
+
+        switch (type) {
+
+            case 'village':
+
+                setAdfilterArray(
+                    characterArray &&
+                    characterArray?.map((character) => character.personal.affiliation && character.personal.affiliation)
+                );
+                break;
+            case 'kekkeiGenkai':
+
+                setAdfilterArray(
+                    characterArray &&
+                    characterArray?.map((character) => character.personal.kekkeiGenkai && character.personal.kekkeiGenkai)
+                );
+                break;
+
+        }
+    }, [type, characterArray]);
+    //  console.log(adFilterArray);
+
+    let newArray = Array.from(new Set(adFilterArray.flat()));
+    console.log(newArray);
+
+
+}

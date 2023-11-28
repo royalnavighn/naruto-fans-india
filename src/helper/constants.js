@@ -1,4 +1,4 @@
-export const urlOfDb = 'https://www.narutodb.xyz/api'
+export const urlOfDb = 'https://narutodb.xyz/api'
 
 export const DropDownOptions = [
     "clan",
@@ -18,10 +18,10 @@ export const LoadMoreOptions = [
 ]
 
 
-export const CategoryFilterOptions = [
-    { 'value': 'clan', 'label': 'Clans'},
-    { 'value': 'village', 'label': 'Villages'},
-    { 'value': 'kekkeigenkai', 'label': 'kekkeiGenkai'},
-    { 'value': 'tailedbeast', 'label': 'TailedBeasts'},
-    { 'value': 'teams', 'label': 'Teams'}
-]
+// export const CategoryFilterOptions = [
+//     { 'value': 'clan', 'label': 'Clans'},
+//     { 'value': 'village', 'label': 'Villages'},
+//     { 'value': 'kekkeigenkai', 'label': 'kekkeiGenkai'},
+//     { 'value': 'tailedbeast', 'label': 'TailedBeasts'},
+//     { 'value': 'teams', 'label': 'Teams'}
+// ]

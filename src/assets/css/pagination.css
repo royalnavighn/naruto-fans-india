@@ -97,8 +97,7 @@ body {
     background: #ddd;
 }
 
-
-/* loader container */
+/* loader style */
 
 .eye {
     position: absolute;
@@ -106,10 +105,10 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    width: 30vw;
-    height: 30vw;
+    width: 15vw;
+    height: 15vw;
     border-radius: 50%;
-    border: 2.5vw solid #000;
+    border: 1.25vw solid #000;
     box-sizing: border-box;
     background-color: #a50c0e;
     display: flex;
@@ -123,18 +122,18 @@ body {
     width: 100%;
     position: absolute;
     top: 0;
-    background-color: #fff ;
-    border-top-left-radius: 50vw;
-    border-top-right-radius: 50vw;
+    background-color: #fff;
+    border-top-left-radius: 15vw;
+    border-top-right-radius: 15vw;
     z-index: 1;
-    border-bottom: 2.5vw solid #000;
+    border-bottom: 1.25vw solid #000;
     box-sizing: border-box;
     animation: blink 3s ease-out infinite;
 }
 
 .eye .black-outline {
-    height: calc(0.6 * 30vw);
-    width: calc(0.6 * 30vw);
+    height: calc(0.6 * 15vw);
+    width: calc(0.6 * 15vw);
     border-radius: 50%;
     border: 3px solid #000;
     display: flex;
@@ -144,8 +143,8 @@ body {
 }
 
 .eye .pupil {
-    height: calc(0.25 * 30vw);
-    width: calc(0.25 * 30vw);
+    height: calc(0.25 * 15vw);
+    width: calc(0.25 * 15vw);
     position: absolute;
     border-radius: 50%;
     background-color: #000;
@@ -153,8 +152,8 @@ body {
 
 .eye .tear {
     border-radius: 50%;
-    height: calc(0.065 * 30vw);
-    width: calc(0.065 * 30vw);
+    height: calc(0.065 * 15vw);
+    width: calc(0.065 * 15vw);
     position: absolute;
     background-color: #000;
 }
@@ -162,33 +161,33 @@ body {
 .eye .tear:before {
     position: absolute;
     border-radius: 50%;
-    height: calc((0.065 * 30vw) + 0.4 * (0.065 * 30vw));
-    width: calc((0.065 * 30vw) + 0.4 * (0.065 * 30vw));
+    height: calc((0.065 * 15vw) + 0.4 * (0.065 * 15vw));
+    width: calc((0.065 * 15vw) + 0.4 * (0.065 * 15vw));
     content: '';
     box-shadow: 3px 5px 0 #000;
 }
 
 .eye .tear.first {
     background-color: #000;
-    margin-bottom: 30px;
-    margin-right: calc((0.6 * 30vw) + 2px);
+    margin-bottom: 15px;
+    margin-right: calc((0.6 * 15vw) + 1px);
 }
 
 .eye .tear.first:before {
-    top: -1vw;
-    left: -1vw;
+    top: -0.5vw;
+    left: -0.5vw;
     transform: rotate(35deg);
 }
 
 .eye .tear.second {
     background-color: #000;
-    margin-bottom: 30px;
-    margin-left: calc((0.6 * 30vw) + 2px);
+    margin-bottom: 15px;
+    margin-left: calc((0.6 * 15vw) + 1px);
 }
 
 .eye .tear.second:before {
-    top: -0.2vw;
-    left: 0.2vw;
+    top: -0.1vw;
+    left: 0.1vw;
     transform: rotate(180deg);
 }
 

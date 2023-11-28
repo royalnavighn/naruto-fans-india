@@ -7,14 +7,11 @@ import 'slick-carousel/slick/slick-theme.css';
 import { urlOfDb } from '../helper/constants';
 import { SelectedValueContext } from './ContainerComponents';
 import { PaginationArray } from '../helper/generalHelper';
-
 import '../assets/css/pagination.css'
 
 
 
-
-
-function CharacterCards() {
+function CharacterCards({ setCharacterArray }) {
 
     const [loadMore, setLoadMore] = useState(100);
     const [fetchData, setFetchData] = useState({ characters: [], totalCharacters: 0 });
@@ -24,6 +21,8 @@ function CharacterCards() {
     const [loading, setLoading] = useState(true);
     const [activePage, setActivePage] = useState(1);
     const [pageNumber, setPageNumber] = useState(1)
+
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -56,7 +55,7 @@ function CharacterCards() {
                     (clan && character.personal?.clan === clan) ||
                     (village && Array.isArray(character.personal?.affiliation) ? character.affiliation?.village.includes(village) : character.personal?.affiliation === village) ||
                     (kekkeiGenkai && Array.isArray(character.personal?.kekkeiGenkai) ? character.personal?.kekkeiGenkai.includes(kekkeiGenkai) : character.personal?.kekkeiGenkai === kekkeiGenkai) ||
-                    (tailedBeast && character.personal?.tailedBeast ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast ) ||
+                    (tailedBeast && character.personal?.tailedBeast ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast) ||
                     (team && Array.isArray(character.personal?.team) ? character.personal?.team.includes(team) : character.personal?.team === team)
                 )) ||
             null
@@ -72,6 +71,7 @@ function CharacterCards() {
 
     let characterArray = filteredArray.length ? filteredArray : fetchData.characters;
 
+    setCharacterArray(characterArray);
 
     let pagination = PaginationArray(fetchData.totalCharacters, loadMore)
 
@@ -97,7 +97,7 @@ function CharacterCards() {
 
 
                 {!loading &&
-                    ((filteredArray.length >= 100) &&
+                    ((!filteredArray.length) &&
                         < section className='pagination'>
 
                             <div id="wrapper">
@@ -147,7 +147,7 @@ function CharacterCards() {
                 </ul>
 
                 {!loading &&
-                    ((characterArray.length >= 100) &&
+                    ((!filteredArray.length) &&
                         < section className='pagination'>
 
                             <div id="wrapper">
