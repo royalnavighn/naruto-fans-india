@@ -16,11 +16,16 @@ function CharacterCards({ setCharacterArray }) {
     const [loadMore, setLoadMore] = useState(100);
     const [fetchData, setFetchData] = useState({ characters: [], totalCharacters: 0 });
     const { clan, village, kekkeiGenkai, tailedBeast, team } = useContext(SelectedValueContext)
+
+
     const [filteredArray, setFilteredArray] = useState([]);
+
     const url = urlOfDb
     const [loading, setLoading] = useState(true);
     const [activePage, setActivePage] = useState(1);
     const [pageNumber, setPageNumber] = useState(1)
+
+
 
 
 
@@ -52,15 +57,18 @@ function CharacterCards({ setCharacterArray }) {
         setFilteredArray(
             (fetchData.characters &&
                 fetchData.characters.filter(character =>
-                    (clan && character.personal?.clan === clan) ||
-                    (village && Array.isArray(character.personal?.affiliation) ? character.affiliation?.village.includes(village) : character.personal?.affiliation === village) ||
-                    (kekkeiGenkai && Array.isArray(character.personal?.kekkeiGenkai) ? character.personal?.kekkeiGenkai.includes(kekkeiGenkai) : character.personal?.kekkeiGenkai === kekkeiGenkai) ||
-                    (tailedBeast && character.personal?.tailedBeast ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast) ||
-                    (team && Array.isArray(character.personal?.team) ? character.personal?.team.includes(team) : character.personal?.team === team)
+                    (clan.length && character.personal?.clan === clan) ||
+                    (village.length && Array.isArray(character.personal?.affiliation) ? character.affiliation?.village.includes(village) : character.personal?.affiliation === village) ||
+                    (kekkeiGenkai.length && Array.isArray(character.personal?.kekkeiGenkai) ? character.personal?.kekkeiGenkai.includes(kekkeiGenkai) : character.personal?.kekkeiGenkai === kekkeiGenkai) ||
+                    (tailedBeast.length && (character.personal?.tailedBeast ? character.personal?.tailedBeast.includes(tailedBeast) : character.personal?.tailedBeast === tailedBeast)) ||
+                    (team.length && Array.isArray(character.personal?.team) ? character.personal?.team.includes(team) : character.personal?.team === team)
                 )) ||
             null
         );
     }, [fetchData.characters, clan, village, kekkeiGenkai, tailedBeast, team]);
+
+    console.log(fetchData.characters.length);
+
 
     const handleClick = (page) => {
         setPageNumber(page)
@@ -69,9 +77,9 @@ function CharacterCards({ setCharacterArray }) {
 
     };
 
-    let characterArray = filteredArray.length ? filteredArray : fetchData.characters;
+    console.log(filteredArray.length);
 
-    setCharacterArray(characterArray);
+    let characterArray = filteredArray.length ? filteredArray : fetchData.characters;
 
     let pagination = PaginationArray(fetchData.totalCharacters, loadMore)
 
@@ -93,77 +101,82 @@ function CharacterCards({ setCharacterArray }) {
 
 
                 </>
-            ) : <>
+            ) :
 
+                <>
 
-                {!loading &&
-                    ((!filteredArray.length) &&
-                        < section className='pagination'>
+                    {characterArray.length === 1431 ? <h2>No Characters Found</h2> :
+                        (
+                            <>
+                                {!loading &&
+                                    ((!filteredArray.length) &&
+                                        < section className='pagination'>
 
-                            <div id="wrapper">
+                                            <div id="wrapper">
 
-                                <ul id="pagination">
+                                                <ul id="pagination">
 
-                                    {pagination.map((page, i) => (<li key={i} > <a key={i} className={page === activePage ? 'active' : ''} onClick={() => handleClick(page)} > {page} </a> </li>))}
+                                                    {pagination.map((page, i) => (<li key={i} > <a key={i} className={page === activePage ? 'active' : ''} onClick={() => handleClick(page)} > {page} </a> </li>))}
 
-                                </ul>
+                                                </ul>
 
-                            </div>
-                        </section>)
-                }
+                                            </div>
+                                        </section>)
+                                }
 
-                <ul className='cards'>
+                                <ul className='cards'>
 
-                    {characterArray && characterArray.map((post, index) => (
-                        <>
+                                    {characterArray && characterArray.map((post, index) => (
+                                        <>
 
-                            <li className='cards__item' key={index} >
-                                <Link to={`${post.id}/${post.name}`} >
+                                            <li className='cards__item' key={index} >
+                                                <Link to={`${post.id}/${post.name}`} >
 
-                                    <div className='card' style={{ width: "18rem" }} >
+                                                    <div className='card' style={{ width: "18rem" }} >
 
-                                        <div className='card__image'>
-                                            <Slider
-                                                autoplay={true}
-                                                autoplaySpeed={1000}>
-                                                {post.images.map((postImage, i) => (
-                                                    <div key={i}>
-                                                        <img src={postImage} className="card-img-top" alt={post.name + i} />
+                                                        <div className='card__image'>
+                                                            <Slider
+                                                                autoplay={true}
+                                                                autoplaySpeed={1000}>
+                                                                {post.images.map((postImage, i) => (
+                                                                    <div key={i}>
+                                                                        <img src={postImage} className="card-img-top" alt={post.name + i} />
+                                                                    </div>
+                                                                ))}
+                                                            </Slider>
+                                                        </div>
+                                                        <div className='card__content'>
+                                                            <h2 className='card__title'> {post.name} </h2>
+                                                        </div>
                                                     </div>
-                                                ))}
-                                            </Slider>
-                                        </div>
-                                        <div className='card__content'>
-                                            <h2 className='card__title'> {post.name} </h2>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </li>
+                                                </Link>
+                                            </li>
 
 
-                        </>
-                    ))
-                    }
-                </ul>
-
-                {!loading &&
-                    ((!filteredArray.length) &&
-                        < section className='pagination'>
-
-                            <div id="wrapper">
-
-                                <ul id="pagination">
-
-                                    {pagination.map((page, i) => (<li key={i} > <a key={i} className={page === activePage ? 'active' : ''} onClick={() => handleClick(page)} > {page} </a> </li>))}
-
+                                        </>
+                                    ))
+                                    }
                                 </ul>
 
-                            </div>
-                        </section>)
-                }
+                                {!loading &&
+                                    ((!filteredArray.length) &&
+                                        < section className='pagination'>
 
+                                            <div id="wrapper">
 
-            </>
+                                                <ul id="pagination">
+
+                                                    {pagination.map((page, i) => (<li key={i} > <a key={i} className={page === activePage ? 'active' : ''} onClick={() => handleClick(page)} > {page} </a> </li>))}
+
+                                                </ul>
+
+                                            </div>
+                                        </section>)
+                                }
+                            </>
+                        )
+                    }
+                </>
             }
         </>
     )

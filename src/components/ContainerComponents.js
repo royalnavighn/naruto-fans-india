@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../assets/css/card.css'
 import { Container } from 'react-bootstrap';
-import FilteredData, { AdvanceFilterData } from '../helper/FilteredData';
+import FilteredData from '../helper/FilteredData';
 import CharacterCards from './CharacterCards';
-//import { CategoryFilterOptions } from '../helper/constants';
 
 
 export const SelectedValueContext = React.createContext();
@@ -22,7 +21,9 @@ function ContainerComponents() {
     const [team, setTeam] = useState('');
     const [characterArray, setCharacterArray] = useState([]);
 
-    //console.log(characterArray);
+
+
+
 
 
     return (
@@ -41,23 +42,15 @@ function ContainerComponents() {
                 </Col>
                 <Col lg={{ span: 2, order: 2 }} md={{ order: 1 }} sm={{ order: 1 }} xs={{ order: 1 }}>
 
-                    <div className='filter' >
+                    <div className='filter'>
                         <h2> Filter</h2>
                         <br />
+                        <CharacterArrayContext.Provider value={characterArray}>
                         <FilteredData setClan={setClan} type="clan" />
                         <FilteredData setVillage={setVillage} type="village" />
                         <FilteredData setKekkeiGenkai={setKekkeiGenkai} type="kekkei-genkai" />
                         <FilteredData setTailedBeast={setTailedBeast} type="tailed-beast" />
                         <FilteredData setTeam={setTeam} type="team" />
-                    </div>
-
-                    <div className='advance-filter'>
-                        <h2>Advance Filter</h2>
-                        <br />
-                        <CharacterArrayContext.Provider value={characterArray}>
-                            <FilteredData setClan={setClan} type="clan" />
-                            <AdvanceFilterData type='village' />
-                            <AdvanceFilterData type='kekkeiGenkai' />
                         </CharacterArrayContext.Provider>
                     </div>
 

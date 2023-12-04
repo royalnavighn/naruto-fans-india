@@ -18,6 +18,11 @@ export const LoadMoreOptions = [
 ]
 
 
+export const FilterOption =[
+    {'value' : 'filter' , 'label' : 'Filter'},
+    {'value' : 'adFilter' , 'label' : 'Advance Filter'}
+]
+
 // export const CategoryFilterOptions = [
 //     { 'value': 'clan', 'label': 'Clans'},
 //     { 'value': 'village', 'label': 'Villages'},

@@ -1,9 +1,8 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { CharacterArrayContext } from '../components/ContainerComponents';
+import React, { useEffect, useState } from 'react'
 import { urlOfDb } from './constants'
 
-import { GetOptionData } from './dropdownOptionFetch';
+import {  GetOptionData } from './dropdownOptionFetch';
 
 export const selectBoxOptions = React.createContext();
 
@@ -11,6 +10,8 @@ function FilteredData({ setClan, setVillage, setKekkeiGenkai, setTailedBeast, se
     const [fetchData, setFetchData] = useState('');
     const [dataUrl, setDataUrl] = useState('')
     const url = urlOfDb
+
+
 
     useEffect(() => {
         setDataUrl(`${url}/${type}?page=1&limit=1500`);
@@ -30,7 +31,7 @@ function FilteredData({ setClan, setVillage, setKekkeiGenkai, setTailedBeast, se
 
                 {clans &&
                     <div className='clan-filter'>
-                        <GetOptionData setOption={setClan} type={'clan'} > select a clan </GetOptionData>
+                        <GetOptionData   setOption={setClan} type={'clan'} > select a clan </GetOptionData>
                     </div>
                 }
                 {villages &&
@@ -71,46 +72,3 @@ export default FilteredData
 
 
 
-
-export const AdvanceFilterData = ({ type }) => {
-
-    const characterArray = useContext(CharacterArrayContext);
-
-    const [adFilterArray, setAdfilterArray] = useState([]);
-
-    // console.log(characterArray);
-
-    // characterArray?.map((character) => console.log( character.personal.affiliation))
-
-
-
-
-
-    useEffect(() => {
-
-        switch (type) {
-
-            case 'village':
-
-                setAdfilterArray(
-                    characterArray &&
-                    characterArray?.map((character) => character.personal.affiliation && character.personal.affiliation)
-                );
-                break;
-            case 'kekkeiGenkai':
-
-                setAdfilterArray(
-                    characterArray &&
-                    characterArray?.map((character) => character.personal.kekkeiGenkai && character.personal.kekkeiGenkai)
-                );
-                break;
-
-        }
-    }, [type, characterArray]);
-    //  console.log(adFilterArray);
-
-    let newArray = Array.from(new Set(adFilterArray.flat()));
-    console.log(newArray);
-
-
-}
