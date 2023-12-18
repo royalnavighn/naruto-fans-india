@@ -1,62 +1,90 @@
-import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import Debut from './Details/characterDetails/Debut';
-import Family from './Details/characterDetails/Family';
-import JutsuAndNatureType from './Details/characterDetails/JutsuAndNatureType';
-import NameAndImage from './Details/characterDetails/NameAndImage';
-import OtherDetails from './Details/characterDetails/OtherDetails';
-import Personal from './Details/characterDetails/Personal';
-import { urlOfDb } from '../helper/constants';
+import axios from "axios";
+import React, {  useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import Debut from "./Details/characterDetails/Debut";
+import Family from "./Details/characterDetails/Family";
+import JutsuAndNatureType from "./Details/characterDetails/JutsuAndNatureType";
 
+import OtherDetails from "./Details/characterDetails/OtherDetails";
+import Personal from "./Details/characterDetails/Personal";
 
-export const characterDataContext = React.createContext()
+import styled from "styled-components";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Slider from "react-slick";
 
-function CharacterDetails() {
+export const characterDataContext = React.createContext();
 
-    const { id } = useParams();
+const HeaderContent = styled.h1`
+  font-family: "Permanent Marker", cursive;
+`;
 
-    const [characterData, setCharacterData] = useState(null);
-
-    const baseurl = urlOfDb
-    //
-    const character = async () => {
-        const response = await axios.get(`${baseurl}/character/${id}`);
-        return response.data;
+function CharacterDetails(props) {
+  const location = useLocation();
+  const [idPost, setIdPost] = useState();
+  let params = new URLSearchParams(location.search);
+  let id = params.get("id");
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get(
+        `https://narutodb.xyz/api/character/${id}`
+      );
+      setIdPost(response ? response.data : "");
     };
-
-    useEffect(() => {
-        character().then(setCharacterData);
-    }, [id]);
-
-    if (!characterData) {
-        return <div>Loading...</div>;
-    }
+    fetchData();
+  }, [location, id]);
 
 
-    return (
+  if ( !idPost) {
+    return <div>Loading...</div>;
+  }
 
+  return (
+    idPost && (
+      <Container>
+        <characterDataContext.Provider value={idPost}>
+          <Row>
+            <HeaderContent>{idPost.name}</HeaderContent>
 
-        <div>
-            <characterDataContext.Provider value={characterData} >
-                {/* <NameADataFetchndImag /> */}
+            <Col>
+              <Row>
+                <Col>
+                  <Personal />
+                </Col>
+                <Col xs={4}>
+                  <Slider autoplay={true} autoplaySpeed={1000}>
+                    {idPost.images.map((postImage, i) => (
+                      <div key={i}>
+                        <img
+                          src={postImage}
+                          className="card-img-top main"
+                          alt={idPost.name + i}
+                        />
+                      </div>
+                    ))}
+                  </Slider>
+                </Col>
+                <Col>
+                  <Family />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
 
-                <Personal />
+          <JutsuAndNatureType />
 
-                <Family />
+          <OtherDetails />
 
-                <JutsuAndNatureType />
-
-                <OtherDetails />
-
-
-                <Debut />
-            </characterDataContext.Provider>
-
-
-
-        </div>
-    );
+          <Row>
+            <Col>
+              <Debut />
+            </Col>{" "}
+          </Row>
+        </characterDataContext.Provider>
+      </Container>
+    )
+  );
 }
 
-export default CharacterDetails
+export default CharacterDetails;

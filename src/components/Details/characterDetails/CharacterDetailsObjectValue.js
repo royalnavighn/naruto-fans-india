@@ -1,4 +1,5 @@
 import React from 'react'
+import { SpanText } from './JutsuAndNatureType';
 
 
 function CharacterDetailsObjectValue({ data, children }) {
@@ -11,7 +12,7 @@ function CharacterDetailsObjectValue({ data, children }) {
 
     return (
 
-        <>
+        <SpanText>
             {
                 Array.isArray(data) ?
                     datas.map(([key, value] = datas) => (
@@ -19,7 +20,7 @@ function CharacterDetailsObjectValue({ data, children }) {
                     )
                     ) : Object.values(data)
             }
-        </>
+        </SpanText>
 
     )
 }

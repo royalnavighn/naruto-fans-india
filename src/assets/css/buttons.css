@@ -1,0 +1,40 @@
+.button {
+    background: #ffffff;
+    width: 180px;
+    display: flex;
+    height: 50px;
+    padding: 4px 0;
+    margin-bottom: 60px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    text-align: center;
+    flex-direction: row;
+    /* align-content: center; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.button p {
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    color: #fff;
+    -webkit-user-select: none;
+    user-select: none;
+    margin: 0;
+    /* Remove default margin */
+}
+
+.button img.leaf {
+    color: #ffff;
+    height: 20px;
+    vertical-align: middle;
+    /* Align the image vertically in the middle of the line */
+}
+
+body {
+    background-color: #EA9828;
+}

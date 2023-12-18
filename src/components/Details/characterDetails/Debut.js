@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import { getRankSectionByRankDetails } from '../../../helper/sectionContentHelper'
 import { characterDataContext } from '../../CharacterDetails'
+import { SubHeaderContent } from './JutsuAndNatureType'
 
 
 function Debut() {
@@ -13,7 +14,7 @@ function Debut() {
     <div>
     {debut &&
       <div className='debut'>
-        <h2>Debut</h2>
+        <SubHeaderContent>Debut</SubHeaderContent>
 
         <div dangerouslySetInnerHTML={{
           __html: debutSection

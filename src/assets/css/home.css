@@ -1,0 +1,270 @@
+body {
+	background-color: #EA9828;
+}
+
+h1 {
+	/* align-content: center; */
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5%;
+}
+
+.row {
+	margin: 3% 0 0 0;
+}
+
+.blocks {
+	display: grid;
+	align-items: center;
+	justify-items: start;
+	justify-content: center;
+	font-size: larger;
+}
+
+span.discription {
+	font-family: "Kalam", cursive;
+	font-weight: 800;
+}
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+.navitem {
+color: #000;
+
+}
+.navitem:hover{
+	color: #f2f2f2;
+}
+
+.naturetype {
+	margin-top: 3%;
+}
+
+.boldspan {
+	font-weight: 800;
+	font-size: larger;
+	font-family: "Patrick Hand", cursive;
+}
+
+.ages {
+	display: grid;
+	justify-items: start;
+}
+
+.leftblocks {
+	display: grid;
+	justify-items: end;
+	align-content: center;
+	justify-content: end;
+	align-items: center;
+}
+
+.jutsu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbar {
+	display: flex;
+	align-items: center;
+	background: #EA9828;
+	color: white;
+	font-family: Helvetica;
+	font-weight: 300;
+}
+
+.navbar__title {
+	margin-right: auto;
+	font-size: 150%;
+	padding: 12px 16px;
+}
+
+.navbar__item {
+	padding: 16px 16px;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 40px;
+	font-weight: 500;
+	background: -webkit-linear-gradient(right, #E86F40, #F9EF11);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: system-ui;
+}
+
+.navbar__item:hover {
+	padding: 16px 16px;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 40px;
+	font-weight: 500;
+	background: -webkit-linear-gradient(right, #F9EF11, #E86F40);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-family: system-ui;
+	transform: perspective();
+}
+
+
+img.narutologo {
+	max-height: 80px;
+	max-width: 200px;
+}
+
+#header-hero {
+	width: 100%;
+	display: block;
+	position: relative;
+}
+
+#header-hero .header-bg {
+	width: 100%;
+	height: auto;
+}
+
+span {
+	font-size: large;
+}
+
+#header-hero .header-bg img {
+	width: 100%;
+	height: auto;
+}
+
+#header-hero .header-content {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(165 165 165 / 73%);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+	position: absolute;
+	top: 0%;
+	text-align: center;
+	color: #f2f2f2;
+	padding: 0rem 0.4rem;
+}
+
+#header-hero .header-content p.heading-1 {
+	text-transform: uppercase;
+	margin: 0 auto;
+	font-family: "Lato", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-bottom: 2vw;
+	padding-top: 9vw;
+}
+
+#header-hero .header-content h1 {
+	margin: 120px auto;
+	font-size: 8rem;
+	font-style: italic;
+	text-transform: uppercase;
+	margin-bottom: 2.4vw;
+	color: #000;
+}
+
+#header-hero .header-content h1 .logo-style {
+	color: #ce0095;
+}
+
+#header-hero .header-content p.description {
+	margin: 0 auto;
+	width: 30%;
+	font-family: Cambria;
+	font-size: 1.4rem;
+	font-style: italic;
+	margin-bottom: 5vw;
+	color: #000000;
+	/* font: icon; */
+	font-family: monospace;
+}
+
+#header-hero .header-content .button {
+	margin: 0 auto;
+	background-color: #EA9828;
+	-webkit-box-shadow: 0px 1px 3.84px 0.16px rgba(0, 0, 0, 0.35);
+	box-shadow: 0px 1px 3.84px 0.16px rgba(0, 0, 0, 0.35);
+	padding: 0.8rem;
+	margin-top: 30%;
+
+}
+
+#header-hero .header-content .button p {
+	font-family: Cambria;
+	font-size: 1rem;
+	font-weight: 400;
+	text-align: justify;
+	margin: 0 auto;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: monospace;
+}
+
+@media only screen and (max-width: 1440px) {
+	#header-hero .header-content p.description {
+		width: 40%;
+		margin-bottom: 3rem;
+		font-size: 1.2rem;
+	}
+
+	#header-hero .header-content p.heading-1 {
+		padding-top: 8vw;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	#header-hero .header-bg {
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+	}
+
+	#header-hero .header-bg img {
+		width: 100rem;
+		height: 40rem;
+		margin-left: -50%;
+	}
+
+	#header-hero .header-content p.heading-1 {
+		padding-top: 20vw;
+	}
+
+	#header-hero .header-content p.description {
+		width: 60%;
+		margin-bottom: 4rem;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	#header-hero .header-content h1 {
+		font-size: 2rem;
+		padding: 1rem 0rem;
+	}
+
+	#header-hero .header-bg img {
+		width: 100rem;
+		height: 40rem;
+		margin-left: -140%;
+	}
+
+	#header-hero .header-content p.description {
+		width: 50%;
+		margin-bottom: 3rem;
+		text-align: left;
+	}
+
+	#header-hero .header-content .button {
+		width: 8rem;
+		padding: 0.6rem;
+	}
+
+	#header-hero .header-content .button p {
+		font-size: 0.8rem;
+	}
+}

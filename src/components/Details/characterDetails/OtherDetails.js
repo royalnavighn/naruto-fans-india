@@ -1,117 +1,152 @@
-import React, { useContext } from 'react';
-import { characterDataContext } from '../../CharacterDetails';
-import CharacterDetailsObjectValue from './CharacterDetailsObjectValue';
-import { getRankSectionByRankDetails } from '../../../helper/sectionContentHelper';
+import React, { useContext } from "react";
+import { characterDataContext } from "../../CharacterDetails";
+import CharacterDetailsObjectValue from "./CharacterDetailsObjectValue";
+import { getRankSectionByRankDetails } from "../../../helper/sectionContentHelper";
+import { Col, Row } from "react-bootstrap";
+import { SubHeaderContent } from "./JutsuAndNatureType";
 
 function OtherDetails() {
+  const {
+    tools,
+    uniqueTraits,
+    rank,
+    personal: otherPersonalDetails,
+  } = useContext(characterDataContext);
 
-    const { tools, uniqueTraits, rank, personal: otherPersonalDetails } = useContext(characterDataContext);
+  const {
+    kekkeiGenkai,
+    kekkeiMōra,
+    tailedBeast,
+    classification,
+    occupation,
+    affiliation,
+    partner,
+    clan,
+    titles,
+  } = otherPersonalDetails;
 
+  let rankSection = getRankSectionByRankDetails(rank);
 
-    const { kekkeiGenkai, kekkeiMōra, tailedBeast, classification, occupation, affiliation, partner, clan, titles } = otherPersonalDetails;
+  return (
+    <div className="other-details">
+      <Row>
+        {tools && (
+          <Col>
+            <div className="tools">
+              <SubHeaderContent>Tools</SubHeaderContent>
+              <span>
+                <CharacterDetailsObjectValue data={tools} />
+              </span>
+            </div>
+          </Col>
+        )}
+        {uniqueTraits && (
+          <Col>
+            <div className="uniquetraits">
+              <SubHeaderContent>Unique Traits</SubHeaderContent>
+              <CharacterDetailsObjectValue data={uniqueTraits} />
+            </div>
+          </Col>
+        )}
+        {rankSection && (
+          <Col>
+            <div className="uniquetraits">
+              <SubHeaderContent>Rank</SubHeaderContent>
 
-    let rankSection = getRankSectionByRankDetails(rank);
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: rankSection,
+                }}
+              />
+            </div>
+          </Col>
+        )}
 
+        {kekkeiGenkai && (
+          <Col>
+            <div className="kekkeiGenkai">
+              <SubHeaderContent>KekkeiGenkai</SubHeaderContent>
+              <CharacterDetailsObjectValue data={kekkeiGenkai} />
+            </div>
+          </Col>
+        )}
+      </Row>
+      <Row>
+        {kekkeiMōra && (
+          <Col>
+            {" "}
+            <div className="KekkeiMōra">
+              <SubHeaderContent>KekkeiMōra</SubHeaderContent>
 
-    return (
-        <div className='other-details'>
+              <CharacterDetailsObjectValue data={kekkeiMōra} />
+            </div>
+          </Col>
+        )}
+        {classification && (
+          <Col>
+            <div className="classification">
+              <SubHeaderContent>Classification</SubHeaderContent>
+              <CharacterDetailsObjectValue data={classification} />
+            </div>
+          </Col>
+        )}
 
-            {tools &&
-                <div className='tools'>
-                    <h2>Tools</h2>
-                    <CharacterDetailsObjectValue data={tools} />
-                </div>
+        {tailedBeast && (
+          <Col>
+            <div className="tailedBeast">
+              <SubHeaderContent>TailedBeast</SubHeaderContent>
+              <CharacterDetailsObjectValue data={tailedBeast} />
+            </div>
+          </Col>
+        )}
+        {occupation && (
+          <Col>
+            <div className="occupation">
+              <SubHeaderContent>Occupation</SubHeaderContent>
+              <CharacterDetailsObjectValue data={occupation} />
+            </div>
+          </Col>
+        )}
+      </Row>
+      <Row>
+        {affiliation && (
+          <Col>
+            <div className="affiliation">
+              <SubHeaderContent>Affiliation</SubHeaderContent>
+              <CharacterDetailsObjectValue data={affiliation} />
+            </div>
+          </Col>
+        )}
+        {partner && (
+          <Col>
+            <div className="partner">
+              <SubHeaderContent>Partner</SubHeaderContent>
+              <CharacterDetailsObjectValue data={partner} />
+            </div>
+          </Col>
+        )}
 
-            }
-            {uniqueTraits &&
-                <div className='uniquetraits'>
-                    <h2>Unique Traits</h2>
-                    <CharacterDetailsObjectValue data={uniqueTraits} />
-                </div>
-
-            }
-            {rankSection &&
-                <div className='uniquetraits'>
-                    <h2>Rank</h2>
-
-                    <div dangerouslySetInnerHTML={{
-                        __html: rankSection
-
-                    }} />
-
-                </div>
-
-            }
-            {kekkeiGenkai &&
-                <div className='kekkeiGenkai'>
-                    <h2>KekkeiGenkai</h2>
-                    <CharacterDetailsObjectValue data={kekkeiGenkai} />
-                </div>
-
-            }
-            {kekkeiMōra &&
-                <div className='KekkeiMōra'>
-                    <h2>KekkeiMōra</h2>
-
-                    <CharacterDetailsObjectValue data={kekkeiMōra} />
-                </div>
-
-            }
-
-            {classification &&
-                <div className='classification'>
-                    <h2>Classification</h2>
-                    <CharacterDetailsObjectValue data={classification} />
-                </div>
-
-            }
-            {tailedBeast &&
-                <div className='tailedBeast'>
-                    <h2>TailedBeast</h2>
-                    <CharacterDetailsObjectValue data={tailedBeast} />
-                </div>
-
-            }
-            {occupation &&
-                <div className='occupation'>
-                    <h2>Occupation</h2>
-                    <CharacterDetailsObjectValue data={occupation} />
-                </div>
-
-            }
-            {affiliation &&
-                <div className='affiliation'>
-                    <h2>Affiliation</h2>
-                    <CharacterDetailsObjectValue data={affiliation} />
-                </div>
-
-            }
-            {partner &&
-                <div className='partner'>
-                    <h2>Partner</h2>
-                    <CharacterDetailsObjectValue data={partner} />
-                </div>
-
-            }
-
-            {clan &&
-                <div className='clan'>
-                    <h2>Clan</h2>
-                    <CharacterDetailsObjectValue data={clan} />
-                </div>
-
-            }
-            {titles &&
-                <div className='titles'>
-                    <h2>Titles</h2>
-                    <CharacterDetailsObjectValue data={titles} />
-                </div>
-
-            }
-
-
-        </div>
-    )
+        {clan && (
+          <Col>
+            <div className="clan">
+              <SubHeaderContent>Clan</SubHeaderContent>
+              <CharacterDetailsObjectValue data={clan} />
+            </div>
+          </Col>
+        )}
+      </Row>
+      <Row>
+        {titles && (
+          <Col>
+            <div className="titles">
+              <SubHeaderContent>Titles</SubHeaderContent>
+              <CharacterDetailsObjectValue data={titles} />
+            </div>
+          </Col>
+        )}
+      </Row>
+    </div>
+  );
 }
 
-export default OtherDetails
+export default OtherDetails;
