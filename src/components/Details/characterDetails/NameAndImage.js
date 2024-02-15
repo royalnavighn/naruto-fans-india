@@ -6,7 +6,6 @@ function NameAndImage() {
     const characterData = useContext(characterDataContext)
 
 
-    // console.log(characterData)
     return (
         <>
 

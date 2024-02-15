@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import naruto_logo from "../assets/images/Naruto_logo.png";
 
@@ -11,6 +11,12 @@ export default function HeaderComponen() {
   const location = useLocation();
   const currentPath = location.pathname;
 
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1); // This will go back to the previous page in the browser's history
+  };
+
   return (
     <header className="navbar">
       <div className="navbar__title navbar__item">
@@ -19,17 +25,22 @@ export default function HeaderComponen() {
           <img className="narutologo" src={naruto_logo} alt="logo" />
         </Link>
       </div>
-      {currentPath === "/" ? (
-        <Link to="characters">
-          {" "}
-          <HeaderFont className="navitem"> Characters </HeaderFont>
-        </Link>
-      ) : (
-        <Link to={-1}>
-          {" "}
-          <HeaderFont className="navitem">Back</HeaderFont>{" "}
-        </Link>
-      )}
+      <div className="navitems">
+        {/* <Link to={"joinourteam   "}>
+          <HeaderFont className="navitem">Join Our Team</HeaderFont>
+        </Link> */}
+        {currentPath === "/" ? (
+          <Link to="characters">
+            {" "}
+            <HeaderFont className="navitem"> Characters </HeaderFont>
+          </Link>
+        ) : (
+          <Link onClick={goBack}>
+            {" "}
+            <HeaderFont className="navitem">Back</HeaderFont>{" "}
+          </Link>
+        )}
+      </div>
     </header>
   );
 }

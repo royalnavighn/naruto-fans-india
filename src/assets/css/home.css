@@ -20,7 +20,12 @@ h1 {
 	justify-content: center;
 	font-size: larger;
 }
-
+.navitems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 span.discription {
 	font-family: "Kalam", cursive;
 	font-weight: 800;

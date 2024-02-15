@@ -10,17 +10,21 @@ import { SelectedValueContext } from "./ContainerComponents";
 import { PaginationArray } from "../helper/generalHelper";
 import "../assets/css/pagination.css";
 import { styled } from "styled-components";
+import vacantImage from "../assets/images/placeholder.webp";
+import { useEntireData } from "../App";
 
 const Header2Content = styled.h4`
   font-family: "Permanent Marker", cursive;
 `;
 
-function CharacterCards({ setCharacterArray }) {
+function CharacterCards() {
   let loadMore = 100;
   const [fetchData, setFetchData] = useState({
     characters: [],
     totalCharacters: 0,
   });
+
+  const entireData = useEntireData();
   const { clan, village, kekkeiGenkai, tailedBeast, team } =
     useContext(SelectedValueContext);
 
@@ -49,14 +53,12 @@ function CharacterCards({ setCharacterArray }) {
           console.log(err);
         }
       } else {
-        response = await axios.get(`${url}/character?page=1&limit=1431`);
+        response = entireData;
       }
 
-      setTimeout(function () {
-        setLoading(false);
-      }, 1800);
+      setLoading(false);
+
       setFetchData(response ? response.data : "");
-      //  console.log(response);
     };
     fetchData();
   }, [
@@ -69,6 +71,7 @@ function CharacterCards({ setCharacterArray }) {
     team,
     pageNumber,
   ]);
+  console.log(vacantImage);
 
   useEffect(() => {
     setFilteredArray(
@@ -95,15 +98,11 @@ function CharacterCards({ setCharacterArray }) {
     );
   }, [fetchData.characters, clan, village, kekkeiGenkai, tailedBeast, team]);
 
-  // console.log(fetchData.characters.length);
-
   const handleClick = (page) => {
     setPageNumber(page);
 
     setActivePage((prevActivePage) => (prevActivePage === page ? null : page));
   };
-
-  // console.log(filteredArray.length);
 
   let characterArray = filteredArray.length
     ? filteredArray
@@ -111,6 +110,7 @@ function CharacterCards({ setCharacterArray }) {
 
   let pagination = PaginationArray(fetchData.totalCharacters, loadMore);
 
+  console.log(characterArray);
 
   return (
     <>
@@ -165,17 +165,25 @@ function CharacterCards({ setCharacterArray }) {
                       >
                         <div className="card" style={{ width: "18rem" }}>
                           <div className="card__image">
-                            <Slider autoplay={true} autoplaySpeed={1000}>
-                              {post.images.map((postImage, i) => (
-                                <div key={i}>
-                                  <img
-                                    src={postImage}
-                                    className="card-img-top"
-                                    alt={post.name + i}
-                                  />
-                                </div>
-                              ))}
-                            </Slider>
+                            {post.images.length  ? (
+                              <Slider autoplay={true} autoplaySpeed={1000}>
+                                {post.images.map((postImage, i) => (
+                                  <div key={i}>
+                                    <img
+                                      src={postImage ? postImage : vacantImage}
+                                      className="card-img-top"
+                                      alt={post.name + i}
+                                    />
+                                  </div>
+                                ))}
+                              </Slider>
+                            ) : (
+                              <img
+                                src={vacantImage}
+                                className="card-img-top"
+                                alt={post.name}
+                              />
+                            )}
                           </div>
                           <div className="card__content">
                             <Header2Content> {post.name} </Header2Content>
